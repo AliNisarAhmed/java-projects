@@ -20,6 +20,12 @@
       <artifactId>javafx-controls</artifactId>
       <version>22</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+      <version>2.16.1</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

@@ -19,25 +19,34 @@ public class SelfCheckout {
     scanner.close();
   }
 
-  private static LineItem getLineItemFromUser(Scanner scanner, int index) {
-    System.out.printf("Enter the price of item %d: ", index);
-    double price = scanner.nextDouble();
-
-    System.out.printf("Enter the quantity of item %d: ", index);
-    double quantity = scanner.nextDouble();
-
-    return new LineItem(quantity, price);
-  }
-
   private static List<LineItem> getLineItemsFromUser(Scanner scanner) {
     List<LineItem> items = new ArrayList<>();
     int index = 1;
+    String nextLine = null;
 
     do {
-      LineItem item = getLineItemFromUser(scanner, index);
-      items.add(item);
+      System.out.printf(
+          "Enter the price of item %d: (Press n to stop entering lineItems): ",
+          index);
+      nextLine = scanner.nextLine().trim();
+      if ("n".equals(nextLine)) {
+        break;
+      }
+      double price = Double.parseDouble(nextLine);
+
+      System.out.printf(
+          "Enter the quantity of item %d: (Press n to stop entering lineItems): ",
+          index);
+      nextLine = scanner.nextLine().trim();
+      if ("n".equals(nextLine)) {
+        break;
+      }
+
+      double quantity = Double.parseDouble(nextLine);
+
+      items.add(new LineItem(quantity, price));
       index++;
-    } while (scanner.hasNextDouble());
+    } while (true);
 
     return items;
   }
